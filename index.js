@@ -6,6 +6,8 @@ accordion.forEach((item) => {
     let itemBody = item.querySelector('.accordion__body')
     
     let itemHeight = itemBody.clientHeight;
+
+
     
     itemBody.style.height = '0px'
     
@@ -22,15 +24,17 @@ accordion.forEach((item) => {
         if(accordionBody.classList.contains('accordion__body_open')) {
             itemBody.style.height = itemHeight + 'px';
         } else itemBody.style.height = '0px'
-    }
-// попытка исключить другие
-    let dropOtherAccordions = function () {
-        let nextItem = item.nextElementSibling.querySelector('.accordion__body')
 
-        if(nextItem.classList.contains('accordion__body_open')) {
-            nextItem.style.height = '0px'
-        } 
-    } 
-    dropOtherAccordions();
+        let nextSib = accordionBody.closest('.accordion__btn').nextElementSibling.querySelector('.accordion__body');
+
+        forEach((accordionBody) => {
+            if(accordionBody.classList.contains('accordion__body_open')) {
+                nextSib.style.height = '0px'
+            }
+        })
+    }
+
+
+
 })
 
